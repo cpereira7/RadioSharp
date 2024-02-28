@@ -1,0 +1,712 @@
+[
+    {
+        "name": "RDP Antena 1",
+        "streams": [
+            "https://streaming-live.rtp.pt/liveradio/antena180a/manifest.mpd",
+            "https://radiocast.rtp.pt/antena180a.mp3",
+            "https://www.rtp.pt/play/popup/antena1"
+        ]
+    },
+    {
+        "name": "RTP Antena 2",
+        "streams": [
+            "https://radiocast.rtp.pt/antena280a.mp3",
+            "https://streaming-live.rtp.pt/liveradio/antena280a/playlist.m3u8",
+            "https://www.rtp.pt/play/popup/antena2"
+        ]
+    },
+    {
+        "name": "RDP Antena 3",
+        "streams": [
+            "https://radiocast.rtp.pt/antena380a.mp3",
+            "https://streaming-live.rtp.pt/liveradio/antena380a/playlist.m3u8",
+            "https://www.rtp.pt/play/popup/antena3"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Renascen\u00e7a",
+        "streams": [
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_RENASCENCA.mp3",
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_RENASCENCAAAC.aac",
+            "https://rr.sapo.pt/emissaopub"
+        ]
+    },
+    {
+        "name": "Radio FM",
+        "streams": [
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/RFM.mp3",
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/RFMAAC.aac",
+            "https://rfm.sapo.pt/emissaopub"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Comercial",
+        "streams": [
+            "https://stream-icy.bauermedia.pt/comercial.mp3"
+        ]
+    },
+    {
+        "name": "TSF R\u00e1dio Not\u00edcias",
+        "streams": [
+            "https://directo.tsf.pt/tsfdirecto_32K.mp3",
+            "http://directo.tsf.pt:8181/tsfdirecto.aac",
+            "https://directo.tsf.pt/tsfdirecto.aac",
+            "https://tsfdirecto.tsf.pt/tsfdirecto.mp3",
+            "https://tsfdirecto.tsf.pt/tsfdirecto.aac",
+            "https://directo.tsf.pt/tsfdirecto.mp3",
+            "http://directo.tsf.pt:8181/tsfdirecto.mp3"
+        ]
+    },
+    {
+        "name": "M 80 R\u00e1dio",
+        "streams": [
+            "https://stream-icy.bauermedia.pt/m80.mp3"
+        ]
+    },
+    {
+        "name": "RDP \u00c1frica",
+        "streams": [
+            "https://radiocast.rtp.pt/rdpafrica80a.mp3",
+            "https://streaming-live.rtp.pt/liveradio/rdpafrica80a/playlist.m3u8",
+            "https://www.rtp.pt/play/direto/rdpafrica"
+        ]
+    },
+    {
+        "name": "Golo FM",
+        "streams": [
+            "https://sp0.redeaudio.com/8154/live",
+            "https://sp0.redeaudio.com/8154/stream"
+        ]
+    },
+    {
+        "name": "Mega Hits",
+        "streams": [
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/MEGA_HITS.mp3",
+            "https://playerservices.streamtheworld.com/api/livestream-redirect/MEGA_HITSAAC.aac",
+            "https://megahits.sapo.pt/ouviremissaopub"
+        ]
+    },
+    {
+        "name": "Cidade FM",
+        "streams": [
+            "https://51-222-26-208.webnow.com.br/cidade.mp3",
+            "https://up-rcr.webnow.com.br/cidade.mp3",
+            "https://stream-icy.bauermedia.pt/cidade.mp3",
+            "https://up-continental.webnow.com.br/cidade.mp3"
+        ]
+    },
+    {
+        "name": "Smooth FM",
+        "streams": [
+            "https://stream-icy.bauermedia.pt/smooth.mp3"
+        ]
+    },
+    {
+        "name": "Record FM",
+        "streams": [
+            "https://nl.digitalrm.pt:8010/stream"
+        ]
+    },
+    {
+        "name": "Vodafone FM",
+        "streams": [
+            "http://a"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Ba\u00eda",
+        "streams": [
+            "http://radiobaia.pt"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Sbsr",
+        "streams": [
+            "https://centova.radios.pt/proxy/435?mp=/stream",
+            "http://www.sbsr.fm",
+            "http://centova.radios.pt:8435/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Am\u00e1lia",
+        "streams": [
+            "https://link.radios.pt/radioamalia",
+            "https://www.amalia.fm/radio-online",
+            "http://centova.radios.pt:9496/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Maria",
+        "streams": [
+            "https://dreamsiteradiocp4.com/proxy/rmportugal2",
+            "https://dreamsiteradiocp5.com/proxy/rmportugal1?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Vale do Minho",
+        "streams": [
+            "https://centova.radio.com.pt/proxy/434?mp=/stream",
+            "https://centova.radios.pt/proxy/434?mp=/stream",
+            "http://centova.radios.pt:9434/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Festival",
+        "streams": [
+            "http://centova.radios.pt:9520/",
+            "https://centova.radios.pt/proxy/520?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Nova",
+        "streams": [
+            "http://centova.radios.pt:9528/",
+            "https://www.radionova.fm/videoclipe/live-for-me"
+        ]
+    },
+    {
+        "name": "R\u00e1dio MEO Music",
+        "streams": [
+            "https://link.radios.pt/meomusic",
+            "http://centova.radios.pt:8495/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Nova Era",
+        "streams": [
+            "http://centova.radios.pt:9478/"
+        ]
+    },
+    {
+        "name": "Top FM",
+        "streams": [
+            "http://213.136.92.8:8038/stream",
+            "http://topfm.pt/player"
+        ]
+    },
+    {
+        "name": "RDP Internacional",
+        "streams": [
+            "https://radiocast.rtp.pt/rdpint80a.mp3",
+            "https://radioip.rtp.pt/liveradio/rdpint80a/playlist.m3u8",
+            "https://www.rtp.pt/play/direto/rdpinternacional"
+        ]
+    },
+    {
+        "name": "Orbital R\u00e1dio",
+        "streams": [
+            "https://ec2.yesstreaming.net:3025/stream",
+            "http://centova.radios.pt:8401/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Dom Bosco",
+        "streams": [
+            "http://radiodbosco.myftp.biz:8000/radio"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Marginal",
+        "streams": [
+            "https://link.radios.pt/radiomarginal",
+            "http://centova.radios.pt:8499/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Clube de Lamego",
+        "streams": [
+            "http://audio.ptisp.com:8110/",
+            "http://www.rclamego.pt/portalnovo",
+            "http://rclamego.pt/AVAPLAYER/index.htm"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Gil\u00e3o FM",
+        "streams": [
+            "https://centova.radios.pt/proxy/440?mp=/stream",
+            "https://link.radios.pt/gilaofm",
+            "https://centova.radio.com.pt/proxy/440?mp=/stream",
+            "http://centova.radios.pt:9440/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Horizonte",
+        "streams": [
+            "http://centova.radios.pt:9458/",
+            "https://link.radios.pt/radiohorizontealgarve"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Portalegre",
+        "streams": [
+            "http://centova.radios.pt:9492/stream",
+            "https://centova.radio.com.pt/proxy/492?mp=/stream",
+            "http://centova.radio.com.pt:9492/",
+            "https://link.radios.pt/radioportalegre"
+        ]
+    },
+    {
+        "name": "94 FM",
+        "streams": [
+            "http://185.11.164.106:35022/"
+        ]
+    },
+    {
+        "name": "Antena Minho",
+        "streams": [
+            "https://centova.radio.com.pt/proxy/464?mp=/stream",
+            "http://centova.radios.pt:9464/"
+        ]
+    },
+    {
+        "name": "Diana FM",
+        "streams": [
+            "https://link.radios.pt/dianafm",
+            "http://centova.radios.pt:9460/",
+            "https://centova.radios.pt/proxy/460?mp=/stream"
+        ]
+    },
+    {
+        "name": "Geice FM",
+        "streams": [
+            "https://ec2.yesstreaming.net:3275/stream"
+        ]
+    },
+    {
+        "name": "Horizonte FM",
+        "streams": [
+            "http://a"
+        ]
+    },
+    {
+        "name": "Iris FM",
+        "streams": [
+            "https://centova.radio.com.pt/proxy/529?mp=/stream",
+            "https://sp0.redeaudio.com/9456/",
+            "https://link.radios.pt/irisfm",
+            "http://centova.radio.com.pt:8529/",
+            "http://irisfm.pt/player.htm"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Altitude FM",
+        "streams": [
+            "https://link.radios.pt/altitudefm",
+            "http://centova.radios.pt:9034/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Barcelos",
+        "streams": [
+            "https://link.radios.pt/radiobarcelos",
+            "http://centova.radios.pt:8563/",
+            "https://centova.radios.pt/proxy/563?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Can\u00e7\u00e3o Nova",
+        "streams": [
+            "https://5c643ed5107b7.streamlock.net/cancaonova/radiocnova/playlist.m3u8"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Castelo Branco",
+        "streams": [
+            "http://centova.radios.pt:9462/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Cidade de Tomar",
+        "streams": [
+            "https://shoutcast.htt.pt:8030/radio.mp3"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Clube Foz do Mondego",
+        "streams": [
+            "https://nl.digitalrm.pt:8216/stream",
+            "http://rfmondego.pt"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Clube Penafiel 91.8",
+        "streams": [
+            "http://a"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Despertar",
+        "streams": [
+            "https://stream.zeno.fm/fx5n4m0xkwzuv?zs=O1ySGqnGTliISaprVNqtgw",
+            "https://stream.zeno.fm/fx5n4m0xkwzuv"
+        ]
+    },
+    {
+        "name": "R\u00e1dio F",
+        "streams": [
+            "https://centova.radio.com.pt/proxy/579?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Funda\u00e7ao",
+        "streams": [
+            "http://46.105.172.166:8044/",
+            "http://radiofundacao.net/player/index.php"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Leziria",
+        "streams": [
+            "http://213.136.92.8:8010/"
+        ]
+    },
+    {
+        "name": "Radio Mir\u00f3briga",
+        "streams": [
+            "https://sp0.redeaudio.com/9924/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Nova Antena",
+        "streams": [
+            "http://radios.dotsi.pt:8023/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Onda Viva",
+        "streams": [
+            "https://link.radios.pt/radioondaviva",
+            "http://radioondaviva.com/emissao/emissao.php",
+            "http://centova.radios.pt:9524/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Pax",
+        "streams": [
+            "http://centova.radios.pt:9484/",
+            "https://link.radios.pt/radiopax",
+            "https://centova.radios.pt/proxy/484?mp=/stream",
+            "https://centova.radio.com.pt/proxy/484?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Radar",
+        "streams": [
+            "https://proic1.evspt.com/radar_mp3",
+            "https://proic1.evspt.com/radar_aac"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Riba T\u00e1vora",
+        "streams": [
+            "http://centova.radios.pt:9542/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Santiago",
+        "streams": [
+            "http://eu6.fastcast4u.com:5002/canal2",
+            "http://cp.eu6.fastcast4u.com:5002/santiagoaac",
+            "https://eu6.fastcast4u.com/proxy/dzuigafo?mp=/stream",
+            "https://www.guimaraesdigital.pt/play/index.php",
+            "http://eu6.fastcast4u.com:5002/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Telefonia do Alentejo",
+        "streams": [
+            "https://nl.digitalrm.pt:8046/stream",
+            "https://link.radios.pt/radiotelefoniadoalentejo",
+            "http://centova.radios.pt:8561/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Universidade de Coimbra",
+        "streams": [
+            "https://stream.ruc.pt/high"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Voz do Sorraia",
+        "streams": [
+            "https://link.radios.pt/radiovozdosorraia",
+            "https://centova.radios.pt/proxy/511?mp=/stream",
+            "https://centova.radio.com.pt/proxy/511?mp=/stream",
+            "http://centova.radios.pt:8511/"
+        ]
+    },
+    {
+        "name": "Ultra FM",
+        "streams": [
+            "https://link.radios.pt/ultrafm",
+            "http://centova.radios.pt:9506/",
+            "https://centova.radios.pt/proxy/506?mp=/stream"
+        ]
+    },
+    {
+        "name": "Voz da Plan\u00edcie",
+        "streams": [
+            "http://centova.radios.pt:8441/",
+            "https://www.vozdaplanicie.pt/live",
+            "https://link.radios.pt/vozdaplanicie"
+        ]
+    },
+    {
+        "name": "Digital FM",
+        "streams": [
+            "http://digitalfm.dynu.com:8000/digitalfm64"
+        ]
+    },
+    {
+        "name": "R\u00e1dio 5",
+        "streams": [
+            "https://radios.justweb.pt/8042/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Brigantia",
+        "streams": [
+            "http://centova.radios.pt:8491/",
+            "http://brigantia.pt/radio"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Cidade Hoje",
+        "streams": [
+            "http://centova.radios.pt:8119/",
+            "https://player.cidadehoje.pt",
+            "https://link.radios.pt/radiocidadehoje"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Hertz",
+        "streams": [
+            "http://213.136.92.8:8030/",
+            "http://radiohertz.pt/play/index.php"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Laf\u00f5es",
+        "streams": [
+            "http://a"
+        ]
+    },
+    {
+        "name": "RCI FM",
+        "streams": [
+            "https://nl.digitalrm.pt:8002/stream"
+        ]
+    },
+    {
+        "name": "Total FM",
+        "streams": [
+            "http://sagresfm.pt:9300/mp3",
+            "http://cpanel.totalfm.pt:9300/"
+        ]
+    },
+    {
+        "name": "Antena Sul",
+        "streams": [
+            "https://nl.digitalrm.pt:8022/stream",
+            "https://nl.digitalrm.pt:8014/stream"
+        ]
+    },
+    {
+        "name": "Oxig\u00e9nio FM",
+        "streams": [
+            "https://proic1.evspt.com/oxigenio_aac"
+        ]
+    },
+    {
+        "name": "Popular FM",
+        "streams": [
+            "http://185.11.164.106:32281/",
+            "https://popularfm.com/radio.html"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Alto Minho",
+        "streams": [
+            "https://ec2.yesstreaming.net:3705/stream",
+            "https://radioaltominho.pt/player",
+            "https://ec2.yesstreaming.net:3700/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Botar\u00e9u",
+        "streams": [
+            "https://nl.digitalrm.pt:8238/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Cister FM",
+        "streams": [
+            "http://centova.radios.pt:8453/",
+            "https://link.radios.pt/radiocister",
+            "http://centova.radio.com.pt:8453/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Clube de Arganil",
+        "streams": [
+            "http://cast.evsportugal.com:8135/stream",
+            "http://www.rcarganil.pt/Avaplayer"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Lagoa",
+        "streams": [
+            "http://centova.radios.pt:9488/",
+            "https://link.radios.pt/radiolagoa"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Montemuro",
+        "streams": [
+            "https://eu8.fastcast4u.com/proxy/montemuro?mp=/1"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Positiva",
+        "streams": [
+            "https://nl.digitalrm.pt:8016/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Valdevez",
+        "streams": [
+            "https://link.radios.pt/radiovaldevez",
+            "http://centova.radios.pt:9508/",
+            "https://centova.radios.pt/proxy/508?mp=/stream"
+        ]
+    },
+    {
+        "name": "Terra Quente FM",
+        "streams": [
+            "http://centova.radios.pt:9402/",
+            "https://centova.radios.pt/proxy/402?mp=/stream"
+        ]
+    },
+    {
+        "name": "Tropical FM",
+        "streams": [
+            "https://solid24.streamupsolutions.com/proxy/dcofieen?mp=/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Condest\u00e1vel",
+        "streams": [
+            "http://link.radios.pt/radiocondestavel",
+            "http://centova.radios.pt:8427/"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Elvas",
+        "streams": [
+            "http://radios.dotsi.pt:8025/"
+        ]
+    },
+    {
+        "name": "Antena Livre",
+        "streams": [
+            "https://link.radios.pt/radioantenalivre",
+            "http://centova.radios.pt:8571/",
+            "https://centova.radios.pt/proxy/571?mp=/stream"
+        ]
+    },
+    {
+        "name": "Kiss FM",
+        "streams": [
+            "https://nl.digitalrm.pt:8024/stream"
+        ]
+    },
+    {
+        "name": "Maiorca FM",
+        "streams": [
+            "https://nl.digitalrm.pt:8182/stream"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Clube de Monsanto",
+        "streams": [
+            "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fradiomonsanto%2Fapp%2F190322544333196",
+            "http://www.radiomonsanto.pt/radio-online"
+        ]
+    },
+    {
+        "name": "R\u00e1dio Linear",
+        "streams": [
+            "https://nl.digitalrm.pt:8184/stream",
+            "http://www.justweb.pt/radiolinear"
+        ]
+    },
+    {
+        "name": "R\u00e1dio XL Rom\u00e2ntica",
+        "streams": [
+            "https://radios.justweb.pt:7000/"
+        ]
+    },
+    {
+        "name": "RPS R\u00e1dio Popular de Soure",
+        "streams": [
+            "https://nl.digitalrm.pt:8072/stream",
+            "https://digitalrm.pt/streaming/rpsoure/index.html"
+        ]
+    },
+    {
+        "name": "Soberania FM",
+        "streams": [
+            "https://nl.digitalrm.pt:8034/stream"
+        ]
+    },
+    {
+        "name": "Urbana FM",
+        "streams": [
+            "http://a"
+        ]
+    },
+    {
+        "name": "102 FM",
+        "streams": [
+            "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F102fmradio%2Fapp%2F302604556491058",
+            "https://102fmradio.radiostream123.com"
+        ]
+    },
+    {
+        "name": "ABC R\u00e1dio",
+        "streams": [
+            "http://centova.radio.com.pt:8547/",
+            "http://centova.radios.pt:8547/",
+            "https://link.radios.pt/abcportugal"
+        ]
+    },
+    {
+        "name": "Alive FM",
+        "streams": [
+            "https://radios2.justweb.pt/8002/stream"
+        ]
+    },
+    {
+        "name": "Alvor FM",
+        "streams": [
+            "http://centova.radios.pt:8469/stream",
+            "https://www.alvorfm.com/emissao-online",
+            "https://link.radios.pt/alvorfm"
+        ]
+    },
+    {
+        "name": "Antena Livre de Gouveia",
+        "streams": [
+            "http://centova.radios.pt:9456/stream",
+            "https://link.radios.pt/radioantenalivregouveia",
+            "http://centova.radio.com.pt:9456/",
+            "https://centova.radio.com.pt/proxy/456?mp=/stream"
+        ]
+    },
+    {
+        "name": "Azem\u00e9is FM",
+        "streams": [
+            "https://stream.azfm.com/azfm"
+        ]
+    }
+]
