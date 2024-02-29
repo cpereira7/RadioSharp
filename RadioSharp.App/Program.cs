@@ -1,4 +1,5 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.App.Data;
+using RadioSharp.App.Models;
 using RadioSharp.App.Parser;
 using RadioSharp.App.Player;
 
@@ -26,26 +27,30 @@ namespace RadioSharp.App
             Console.WriteLine();
         }
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            radios = RadioStationsImporter.GetRadios();
-            
-            DrawPlayBackMenu();
+            await DisplayPlayBackMenuAsync();
         }
 
-        private static void DrawPlayBackMenu()
+        private static async Task DisplayPlayBackMenuAsync()
         {
-            int totalPages = (int)Math.Ceiling((double)radios.Count / PageSize);
             int currentPage = 1;
 
             bool exit = false;
             while (!exit)
             {
+                radios = RadioStationsImporter.GetRadios();
+
+                int totalPages = (int)Math.Ceiling((double)radios.Count / PageSize);
+
+                if (currentPage > totalPages)
+                    currentPage = 1;
+
                 DrawAppLogo();
                 DisplayRadioMenu(currentPage);
 
                 Console.WriteLine($" Page {currentPage} of {totalPages}");
-                Console.Write("\n\nSelect a radio by entering its number, N for Next Page, P for Previous Page, Q to Quit: ");
+                Console.Write("\n\nSelect a radio by entering its number, N for Next Page, P for Previous Page, S to search, Q to Quit: ");
 
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int selection))
@@ -69,6 +74,9 @@ namespace RadioSharp.App
                         case "P":
                             currentPage = Math.Max(currentPage - 1, 1);
                             break;
+                        case "S":
+                            await DisplaySearchMenu();
+                            break;
                         case "Q":
                             exit = true;
                             break;
@@ -91,5 +99,29 @@ namespace RadioSharp.App
 
             Console.WriteLine();
         }
+
+        internal static async Task DisplaySearchMenuAsync()
+        {
+            DrawAppLogo();
+
+            Console.WriteLine("Radio Stations Search (press enter to skip)");
+
+            Console.Write("\n Radio Stations Name: ");
+            var name = Console.ReadLine();
+            Console.Write("\n Country Code: ");
+            var country = Console.ReadLine();
+            Console.Write("\n Language: ");
+            var language = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(country) && string.IsNullOrWhiteSpace(language))
+            {
+                Console.WriteLine("No search parameters provided. Skipping search.");
+                Thread.Sleep(3000);
+                return;
+            }
+
+            await RadioSearch.SearchRadios(name, country, language);
+        }
+
     }
 }
