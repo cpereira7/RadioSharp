@@ -26,14 +26,19 @@ namespace RadioSharp.App.Data
             var radioBrowser = new RadioBrowserClient();
 
             var advancedSearch = await radioBrowser.Search.AdvancedAsync(options);
+            
+            HandleSearchResults(advancedSearch);
 
+            Thread.Sleep(3000);
+        }
+
+        private static void HandleSearchResults(List<StationInfo> searchResults)
+        {
             var resultList = new List<RadioStation>();
 
-            if (advancedSearch != null && advancedSearch.Any())
+            if (searchResults != null && searchResults.Any())
             {
-                Console.WriteLine($"Found {advancedSearch.Count} radio stations matching the criteria.");
-
-                foreach (var result in advancedSearch)
+                foreach (var result in searchResults)
                 {
                     var radio = new RadioStation(result.Name.Trim(), result.Url.ToString());
 
@@ -43,15 +48,14 @@ namespace RadioSharp.App.Data
                     }
                 }
 
+                Console.WriteLine($"Found {resultList.Count} radio stations matching the criteria.");
+
                 RadioStationsExporter.ExportRadios(resultList);
             }
             else
             {
                 Console.WriteLine("No radio stations found matching the criteria.");
             }
-
-            Thread.Sleep(3000);
-
         }
     }
 }
