@@ -75,7 +75,7 @@ namespace RadioSharp.App
                             currentPage = Math.Max(currentPage - 1, 1);
                             break;
                         case "S":
-                            await DisplaySearchMenu();
+                            await DisplaySearchMenuAsync();
                             break;
                         case "Q":
                             exit = true;
