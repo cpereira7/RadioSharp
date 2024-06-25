@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x'  
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
       run: dotnet restore RadioSharp.App/RadioSharp.App.csproj
@@ -48,12 +48,16 @@ jobs:
         with:
           name: RadioSharp-App-${{ github.run_number }}
 
+      - name: List directory contents after download
+        run: Get-ChildItem -Path . -Recurse
+        shell: pwsh
+
       - name: List downloaded artifact contents
-        run: Get-ChildItem -Path RadioSharp-App-${{ github.run_number }} -Recurse
+        run: Get-ChildItem -Path ./RadioSharp-App-${{ github.run_number }} -Recurse
         shell: pwsh
 
       - name: Zip artifact
-        run: Compress-Archive -Path RadioSharp-App-${{ github.run_number }} -DestinationPath RadioSharp-App-${{ github.run_number }}.zip
+        run: Compress-Archive -Path ./RadioSharp-App-${{ github.run_number }} -DestinationPath ./RadioSharp-App-${{ github.run_number }}.zip
         shell: pwsh
 
       - name: Upload Release Asset
