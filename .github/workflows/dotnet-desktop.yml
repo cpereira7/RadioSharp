@@ -48,15 +48,6 @@ jobs:
         with:
           name: RadioSharp-App-${{ github.run_number }}
 
-      - name: Delete existing tag
-        run: |
-          TAG_NAME=${{ github.ref }}
-          if git rev-parse $TAG_NAME >/dev/null 2>&1; then
-            git tag -d $TAG_NAME
-            git push --delete origin $TAG_NAME
-          fi
-        shell: bash
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
