@@ -48,16 +48,21 @@ jobs:
         with:
           name: RadioSharp-App-${{ github.run_number }}
 
-      - name: List directory contents after download
-        run: Get-ChildItem -Path . -Recurse
-        shell: pwsh
-
-      - name: List downloaded artifact contents
-        run: Get-ChildItem -Path ./RadioSharp-App-${{ github.run_number }} -Recurse
-        shell: pwsh
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
       - name: Zip artifact
-        run: Compress-Archive -Path ./RadioSharp-App-${{ github.run_number }} -DestinationPath ./RadioSharp-App-${{ github.run_number }}.zip
+        run: |
+          $artifactPath = (Get-ChildItem -Path . -Recurse | Where-Object { $_.Name -eq "RadioSharp-App-${{ github.run_number }}" }).FullName
+          Compress-Archive -Path $artifactPath -DestinationPath "${artifactPath}.zip"
         shell: pwsh
 
       - name: Upload Release Asset
