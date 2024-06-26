@@ -59,23 +59,12 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Zip artifact
-        run: |
-          $artifactDir = Get-ChildItem -Path . -Directory -Recurse | Where-Object { $_.Name -eq "RadioSharp-App-${{ github.run_number }}" }
-          if ($null -eq $artifactDir) {
-            Write-Error "Artifact directory not found: RadioSharp-App-${{ github.run_number }}"
-            exit 1
-          }
-          $artifactFullPath = $artifactDir.FullName
-          Compress-Archive -Path "$artifactFullPath\*" -DestinationPath "${artifactFullPath}.zip"
-        shell: pwsh
-
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./RadioSharp-App-${{ github.run_number }}.zip
+          asset_path: ./publish/RadioSharp-App-${{ github.run_number }}.zip
           asset_name: RadioSharp-App-${{ github.run_number }}.zip
           asset_content_type: application/zip
