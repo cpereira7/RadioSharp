@@ -27,10 +27,15 @@ jobs:
       run: dotnet publish RadioSharp.App/RadioSharp.App.csproj --configuration Release --no-restore --output publish
 
     - name: Archive binaries
+      run: |
+        Compress-Archive -Path publish/* -DestinationPath publish/RadioSharp-App-${{ github.run_number }}.zip
+      shell: pwsh
+
+    - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: RadioSharp-App-${{ github.run_number }}
-        path: publish/**
+        path: publish/RadioSharp-App-${{ github.run_number }}.zip
         if-no-files-found: error
 
     - name: List files in publish directory
