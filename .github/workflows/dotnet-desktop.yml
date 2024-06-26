@@ -61,13 +61,13 @@ jobs:
 
       - name: Zip artifact
         run: |
-          $artifactPath = Get-ChildItem -Path . -Recurse | Where-Object { $_.Name -eq "RadioSharp-App-${{ github.run_number }}" }
-          if ($null -eq $artifactPath) {
-            Write-Error "Artifact not found: RadioSharp-App-${{ github.run_number }}"
+          $artifactDir = Get-ChildItem -Path . -Directory -Recurse | Where-Object { $_.Name -eq "RadioSharp-App-${{ github.run_number }}" }
+          if ($null -eq $artifactDir) {
+            Write-Error "Artifact directory not found: RadioSharp-App-${{ github.run_number }}"
             exit 1
           }
-          $artifactFullPath = $artifactPath.FullName
-          Compress-Archive -Path $artifactFullPath -DestinationPath "${artifactFullPath}.zip"
+          $artifactFullPath = $artifactDir.FullName
+          Compress-Archive -Path "$artifactFullPath\*" -DestinationPath "${artifactFullPath}.zip"
         shell: pwsh
 
       - name: Upload Release Asset
