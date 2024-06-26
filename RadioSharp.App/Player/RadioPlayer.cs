@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using RadioSharp.App.Helpers;
 using RadioSharp.App.Models;
 using System.Diagnostics;
 
@@ -44,8 +45,7 @@ namespace RadioSharp.App.Player
 
             if (!streamPlayed)
             {
-                Console.WriteLine($"No valid streams found for: {selectedRadio.Name}");
-                Thread.Sleep(4000);
+                ConsoleHelpers.DisplayMessageWithDelay($"No valid streams found for: {selectedRadio.Name}", 4000);
             }
         }
 
@@ -64,9 +64,8 @@ namespace RadioSharp.App.Player
                 }
 
                 var time = $"{stopwatch.Elapsed:hh\\:mm\\:ss}";
-                Console.Write($"\r ► {index}. {radio.Name} ({url}) ({time})");
+                ConsoleHelpers.WriteMessageWithDelay($"\r ► {index}. {radio.Name} ({url}) ({time})", 500);
                 Console.Title = $" ► {radio.Name} ({time})";
-                Thread.Sleep(500);
             }
 
             stopwatch.Stop();
