@@ -13,7 +13,7 @@ namespace RadioSharp.App.Player
             int streamIndex = 0;
             bool streamPlayed = false;
 
-            while (!streamPlayed && streamIndex < selectedRadio.Streams.Count())
+            while (!streamPlayed && streamIndex < selectedRadio.Streams.Length)
             {
                 try
                 {
@@ -56,8 +56,13 @@ namespace RadioSharp.App.Player
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            while (!Console.KeyAvailable)
+            while (true)
             {
+                if (Console.KeyAvailable && !VolumeKeyPressed())
+                {
+                    break;
+                }
+
                 var time = $"{stopwatch.Elapsed:hh\\:mm\\:ss}";
                 Console.Write($"\r ► {index}. {radio.Name} ({url}) ({time})");
                 Console.Title = $" ► {radio.Name} ({time})";
@@ -65,6 +70,13 @@ namespace RadioSharp.App.Player
             }
 
             stopwatch.Stop();
+        }
+
+        private static bool VolumeKeyPressed()
+        {
+            var keyInfo = Console.ReadKey(intercept: true);
+
+            return keyInfo.Key == ConsoleKey.VolumeUp || keyInfo.Key == ConsoleKey.VolumeDown;
         }
     }
 }
