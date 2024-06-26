@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x'  
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
       run: dotnet restore RadioSharp.App/RadioSharp.App.csproj
@@ -26,16 +26,15 @@ jobs:
     - name: Publish
       run: dotnet publish RadioSharp.App/RadioSharp.App.csproj --configuration Release --no-restore --output publish
 
-    - name: Archive binaries
+    - name: Create zip archive
+      run: Compress-Archive -Path publish/* -DestinationPath publish/RadioSharp-App-${{ github.run_number }}.zip
+      shell: pwsh
+
+    - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: RadioSharp-App-${{ github.run_number }}
-        path: publish/**
-        if-no-files-found: error
-
-    - name: List files in publish directory
-      run: Get-ChildItem -Path publish/ -Recurse
-      shell: pwsh
+        path: publish/RadioSharp-App-${{ github.run_number }}.zip
 
   release:
     needs: build
@@ -47,15 +46,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: RadioSharp-App-${{ github.run_number }}
-
-      - name: Delete existing tag
-        run: |
-          TAG_NAME=${{ github.ref }}
-          if git rev-parse $TAG_NAME >/dev/null 2>&1; then
-            git tag -d $TAG_NAME
-            git push --delete origin $TAG_NAME
-          fi
-        shell: bash
+          path: ./
 
       - name: Create Release
         id: create_release
@@ -64,13 +55,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.run_number }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-
-      - name: Zip artifact
-        run: Compress-Archive -Path RadioSharp-App-${{ github.run_number }} -DestinationPath RadioSharp-App-${{ github.run_number }}.zip
-        shell: pwsh
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
