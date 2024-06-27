@@ -5,14 +5,23 @@ namespace RadioSharp.App.Parser
 {
     internal class RadioStationsExporter
     {
+        private readonly static string _directoryPath = @"data";
+        private readonly static string _fileName = "radios.json";
+        
         protected RadioStationsExporter() { }
 
         public static void ExportRadios(IList<RadioStation> radios)
         {
             try
             {
-                string jsonContent = JsonConvert.SerializeObject(radios, Formatting.Indented);
-                File.WriteAllText(@"data/radios.json", jsonContent);
+                string filePath = Path.Combine(_directoryPath, _fileName);
+
+                if (File.Exists(filePath))
+                {
+                    BackupExistingFile(filePath);
+                }
+
+                WriteJsonToFile(filePath, radios);
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -27,6 +36,19 @@ namespace RadioSharp.App.Parser
                 Console.WriteLine($"Error: An unexpected error occurred while exporting radio stations. {ex.Message}");
             }
         }
-    }
 
+        private static void WriteJsonToFile(string filePath, IList<RadioStation> radios)
+        {
+            string jsonContent = JsonConvert.SerializeObject(radios, Formatting.Indented);
+            File.WriteAllText(filePath, jsonContent);
+        }
+
+        private static void BackupExistingFile(string filePath)
+        {
+            var totalFiles = Directory.GetFiles(_directoryPath).Length;
+            string backupFileName = $"radios_old_{totalFiles}.json";
+            string backupFilePath = Path.Combine(_directoryPath, backupFileName);
+            File.Copy(filePath, backupFilePath);
+        }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using RadioSharp.App.Data;
+using RadioSharp.App.Helpers;
 using RadioSharp.App.Models;
 using RadioSharp.App.Parser;
 using RadioSharp.App.Player;
@@ -115,8 +116,7 @@ namespace RadioSharp.App
 
             if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(country) && string.IsNullOrWhiteSpace(language))
             {
-                Console.WriteLine("No search parameters provided. Skipping search.");
-                Thread.Sleep(3000);
+                ConsoleHelpers.DisplayMessageWithDelay("No search parameters provided. Skipping search.", 3000);
                 return;
             }
 
