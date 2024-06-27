@@ -9,6 +9,12 @@
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Version>1.0.1</Version>
+    <FileVersion>1.0.1</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="NAudio" Version="2.2.1" />
