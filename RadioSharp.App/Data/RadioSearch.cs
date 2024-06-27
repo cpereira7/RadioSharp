@@ -2,6 +2,7 @@
 using RadioBrowser;
 using RadioSharp.App.Models;
 using RadioSharp.App.Parser;
+using RadioSharp.App.Helpers;
 
 namespace RadioSharp.App.Data
 {
@@ -28,8 +29,6 @@ namespace RadioSharp.App.Data
             var advancedSearch = await radioBrowser.Search.AdvancedAsync(options);
             
             HandleSearchResults(advancedSearch);
-
-            Thread.Sleep(3000);
         }
 
         private static void HandleSearchResults(List<StationInfo> searchResults)
@@ -48,13 +47,13 @@ namespace RadioSharp.App.Data
                     }
                 }
 
-                Console.WriteLine($"Found {resultList.Count} radio stations matching the criteria.");
-
                 RadioStationsExporter.ExportRadios(resultList);
+
+                ConsoleHelpers.DisplayMessageWithDelay($"Found {resultList.Count} radio stations matching the criteria.", 3000);
             }
             else
             {
-                Console.WriteLine("No radio stations found matching the criteria.");
+                ConsoleHelpers.DisplayMessageWithDelay("No radio stations found matching the criteria.", 3000);
             }
         }
     }
