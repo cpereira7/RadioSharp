@@ -1,18 +1,18 @@
 ﻿using NAudio.Wave;
-using RadioSharp.App.Data;
-using RadioSharp.App.Helpers;
+using RadioSharp.App.Menus;
 using RadioSharp.App.Models;
+using RadioSharp.App.Stations;
 using System.Diagnostics;
 
 namespace RadioSharp.App.Player
 {
     public class RadioPlayer : IRadioPlayer
     {
-        private readonly IDatabaseService _databaseService;
+        private readonly IRadioStationsHandler _radioStationsHandler;
 
-        public RadioPlayer(IDatabaseService databaseService)
+        public RadioPlayer(IRadioStationsHandler radioStationsHandler)
         {
-            _databaseService = databaseService;
+            _radioStationsHandler = radioStationsHandler;
         }
 
         public void PlayStream(RadioStation selectedRadio, int choice)
@@ -20,7 +20,7 @@ namespace RadioSharp.App.Player
             int streamIndex = 0;
             bool streamPlayed = false;
 
-            _databaseService.AddRadio(selectedRadio);
+            _radioStationsHandler.SaveLastPlayedRadio(selectedRadio);
 
             while (!streamPlayed && streamIndex < selectedRadio.Streams.Length)
             {

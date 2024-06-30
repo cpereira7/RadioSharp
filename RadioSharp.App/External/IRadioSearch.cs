@@ -1,5 +1,4 @@
-﻿
-namespace RadioSharp.App.Data
+﻿namespace RadioSharp.App.External
 {
     public interface IRadioSearch
     {

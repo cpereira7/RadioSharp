@@ -1,4 +1,4 @@
-﻿namespace RadioSharp.App.Helpers
+﻿namespace RadioSharp.App.Menus
 {
     public static class ConsoleHelpers
     {

@@ -4,8 +4,13 @@ namespace RadioSharp.App.Data
 {
     public interface IDatabaseService
     {
-        void AddRadio(RadioStation radio);
-        IList<RadioStation> GetRadios();
         void InitDatabase();
+        void SaveRadios(IList<RadioStation> radios);
+        IList<RadioStation> GetRadios();
+        void ClearRadios();
+        int GetRadioStationCount();
+        
+        void AddPlayedRadio(RadioStation radio);
+        IList<RadioStation> GetPlayedRadios();
     }
 }

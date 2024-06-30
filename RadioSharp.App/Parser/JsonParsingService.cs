@@ -18,7 +18,7 @@ namespace RadioSharp.App.Parser
         public IList<RadioStation> DeserializeRadioStations(string radioStations)
         {
             if (!string.IsNullOrEmpty(radioStations))
-                return JsonConvert.DeserializeObject<IList<RadioStation>>(radioStations);
+                return JsonConvert.DeserializeObject<IList<RadioStation>>(radioStations)!;
 
             return new List<RadioStation>();
         }

@@ -1,8 +1,7 @@
-﻿using RadioSharp.App.Data;
-using RadioSharp.App.Helpers;
+﻿using RadioSharp.App.External;
 using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
 using RadioSharp.App.Player;
+using RadioSharp.App.Stations;
 
 namespace RadioSharp.App.Menus
 {
@@ -13,14 +12,12 @@ namespace RadioSharp.App.Menus
 
         private readonly IRadioStationsHandler _radioStationsHandler;
         private readonly IRadioSearch _radioSearch;
-        private readonly IDatabaseService _databaseService;
         private readonly IRadioPlayer _radioPlayer;
 
-        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IDatabaseService databaseService, IRadioPlayer radioPlayer)
+        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IRadioPlayer radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;
-            _databaseService = databaseService;
             _radioPlayer = radioPlayer;
         }
 
@@ -51,7 +48,7 @@ namespace RadioSharp.App.Menus
                 radios = _radioStationsHandler.GetRadios();
 
                 if (lastPlayed)
-                    radios = _databaseService.GetRadios();
+                    radios = _radioStationsHandler.GetLastPlayedRadios();
 
                 int totalPages = (int)Math.Ceiling((double)radios.Count / PageSize);
 
@@ -62,7 +59,7 @@ namespace RadioSharp.App.Menus
                 DisplayRadioMenu(currentPage);
 
                 Console.WriteLine($" Page {currentPage} of {totalPages}");
-                Console.Write("\n\nSelect a radio by entering its number, N for Next Page, P for Previous Page, S to search, L for Last Played, Q to Quit: ");
+                Console.Write("\n\nSelect a radio by entering its number, N for Next, P for Previous, S to search, L for Last Played, Q to Quit: ");
 
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int selection))
@@ -78,7 +75,7 @@ namespace RadioSharp.App.Menus
                 }
                 else
                 {
-                    var key = input.Trim().ToUpper();
+                    var key = input!.Trim().ToUpper();
                     switch (key)
                     {
                         case "N":

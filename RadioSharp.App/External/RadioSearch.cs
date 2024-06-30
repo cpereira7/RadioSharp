@@ -1,10 +1,10 @@
 ﻿using RadioBrowser.Models;
 using RadioBrowser;
 using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
-using RadioSharp.App.Helpers;
+using RadioSharp.App.Stations;
+using RadioSharp.App.Menus;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.App.External
 {
     public class RadioSearch : IRadioSearch
     {
