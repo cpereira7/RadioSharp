@@ -21,7 +21,7 @@ namespace RadioSharp.App.Menus
             _radioPlayer = radioPlayer;
         }
 
-        public void DrawAppLogo()
+        private static void DrawAppLogo()
         {
             Console.Clear();
             Console.Title = $" ■ RadioSharp";
@@ -53,7 +53,7 @@ namespace RadioSharp.App.Menus
                     currentPage = 1;
 
                 DrawAppLogo();
-                DisplayRadioMenu(currentPage);
+                DisplayRadioMenu(currentPage, lastPlayed);
 
                 Console.WriteLine($" Page {currentPage} of {totalPages}");
                 Console.Write("\n\n [1..9] Radio, [N] Next, [P] Previous, [S] Search, [L] Last Played, [R] Reload, [Q] Quit/Back: ");
@@ -91,11 +91,12 @@ namespace RadioSharp.App.Menus
             }
         }
 
-        public void DisplayRadioMenu(int page)
+        private void DisplayRadioMenu(int page, bool lastPlayed)
         {
             int startIndex = (page - 1) * PageSize;
             int endIndex = Math.Min(startIndex + PageSize, radios.Count);
 
+            Console.WriteLine(lastPlayed ? "Last Played Radios:\n" : "Radio Lists:\n");
             Console.WriteLine($" Page {page}\n");
 
             for (int i = startIndex; i < endIndex; i++)
@@ -106,7 +107,7 @@ namespace RadioSharp.App.Menus
             Console.WriteLine();
         }
 
-        public async Task DisplaySearchMenuAsync()
+        private async Task DisplaySearchMenuAsync()
         {
             DrawAppLogo();
 

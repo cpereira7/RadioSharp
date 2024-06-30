@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using RadioSharp.App.Data;
+﻿using RadioSharp.App.Data;
 using RadioSharp.App.Models;
 using RadioSharp.App.Parser;
-using System.Net.Http.Json;
 
 namespace RadioSharp.App.Stations
 {
