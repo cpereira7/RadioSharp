@@ -1,4 +1,6 @@
-﻿using RadioSharp.App.Data;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using RadioSharp.App.Data;
 using RadioSharp.App.Helpers;
 using RadioSharp.App.Models;
 using RadioSharp.App.Parser;
@@ -11,7 +13,7 @@ namespace RadioSharp.App
         private static IList<RadioStation> radios = new List<RadioStation>();
         private static Database database = new Database();
         private const int PageSize = 10;
-
+        private static IServiceProvider _serviceProvider;
         static void DrawAppLogo()
         {
             Console.Clear();
@@ -31,10 +33,24 @@ namespace RadioSharp.App
         
         static async Task Main(string[] args)
         {
+            var host = CreateHostBuilder(args).Build();
+
+            _serviceProvider = host.Services;
+
             database.InitDatabase();
 
             await DisplayPlayBackMenuAsync();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddSingleton<IJsonParsingService, JsonParsingService>();
+                services.AddSingleton<IRadioStationsHandler, RadioStationsHandler>();
+                services.AddSingleton<IRadioSearch, RadioSearch>();
+            });
+
 
         private static async Task DisplayPlayBackMenuAsync(bool lastPlayed = false)
         {
@@ -43,7 +59,7 @@ namespace RadioSharp.App
             bool exit = false;
             while (!exit)
             {
-                radios = RadioStationsImporter.GetRadios();
+                radios = _serviceProvider.GetRequiredService<IRadioStationsHandler>().GetRadios();
 
                 if (lastPlayed)
                     radios = database.GetRadios();
@@ -133,7 +149,7 @@ namespace RadioSharp.App
                 return;
             }
 
-            await RadioSearch.SearchRadios(name, country, language);
+            await _serviceProvider.GetRequiredService<IRadioSearch>().SearchRadios(name, country, language);
         }
 
     }
