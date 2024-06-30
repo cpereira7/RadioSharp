@@ -45,10 +45,7 @@ namespace RadioSharp.App.Menus
             bool exit = false;
             while (!exit)
             {
-                radios = _radioStationsHandler.GetRadios();
-
-                if (lastPlayed)
-                    radios = _radioStationsHandler.GetLastPlayedRadios();
+                GetStations(lastPlayed);
 
                 int totalPages = (int)Math.Ceiling((double)radios.Count / PageSize);
 
@@ -89,6 +86,9 @@ namespace RadioSharp.App.Menus
                             break;
                         case "L":
                             await DisplayPlayBackMenuAsync(true);
+                            break;
+                        case "R":
+                            ReloadStations();
                             break;
                         case "Q":
                             exit = true;
@@ -133,6 +133,19 @@ namespace RadioSharp.App.Menus
             }
 
             await _radioSearch.SearchRadios(name, country, language);
+        }
+
+        private void GetStations(bool lastPlayed)
+        {
+            radios = _radioStationsHandler.GetRadios();
+
+            if (lastPlayed)
+                radios = _radioStationsHandler.GetLastPlayedRadios();
+        }
+
+        private void ReloadStations()
+        {
+            _radioStationsHandler.ReloadStations();
         }
     }
 }

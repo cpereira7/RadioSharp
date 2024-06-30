@@ -9,5 +9,7 @@ namespace RadioSharp.App.Stations
 
         IList<RadioStation> GetLastPlayedRadios();
         void SaveLastPlayedRadio(RadioStation radio);
+
+        void ReloadStations();
     }
 }

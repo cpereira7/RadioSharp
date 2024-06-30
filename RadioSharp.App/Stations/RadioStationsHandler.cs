@@ -70,5 +70,10 @@ namespace RadioSharp.App.Stations
         {
             _databaseService.AddPlayedRadio(radio);
         }
+
+        public void ReloadStations()
+        {
+            _databaseService.ClearRadios();
+        }
     }
 }
