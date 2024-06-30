@@ -5,12 +5,12 @@ using System.Text;
 
 namespace RadioSharp.App.Data
 {
-    internal class Database
+    public class DatabaseService : IDatabaseService
     {
         const string dataSource = "radios.db";
         private readonly DuckDBConnection duckDBConnection;
 
-        public Database()
+        public DatabaseService()
         {
             duckDBConnection = new DuckDBConnection($"Data Source={dataSource}");
         }
@@ -42,7 +42,7 @@ namespace RadioSharp.App.Data
         {
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "SELECT json_group_array(radio) AS radio_array " +
-                "FROM (SELECT radio FROM played_radios ORDER BY time DESC LIMIT 10);";
+                "FROM (SELECT DISTINCT radio FROM played_radios ORDER BY time DESC LIMIT 10);";
             using var reader = command.ExecuteReader();
 
             var stringBuilder = new StringBuilder();

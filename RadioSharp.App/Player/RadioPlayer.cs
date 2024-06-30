@@ -1,18 +1,26 @@
 ﻿using NAudio.Wave;
+using RadioSharp.App.Data;
 using RadioSharp.App.Helpers;
 using RadioSharp.App.Models;
 using System.Diagnostics;
 
 namespace RadioSharp.App.Player
 {
-    internal class RadioPlayer
+    public class RadioPlayer : IRadioPlayer
     {
-        protected RadioPlayer() { }
+        private readonly IDatabaseService _databaseService;
 
-        public static void PlayStream(RadioStation selectedRadio, int choice)
+        public RadioPlayer(IDatabaseService databaseService)
+        {
+            _databaseService = databaseService;
+        }
+
+        public void PlayStream(RadioStation selectedRadio, int choice)
         {
             int streamIndex = 0;
             bool streamPlayed = false;
+
+            _databaseService.AddRadio(selectedRadio);
 
             while (!streamPlayed && streamIndex < selectedRadio.Streams.Length)
             {
