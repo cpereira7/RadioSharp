@@ -56,7 +56,7 @@ namespace RadioSharp.App.Menus
                 DisplayRadioMenu(currentPage);
 
                 Console.WriteLine($" Page {currentPage} of {totalPages}");
-                Console.Write("\n\nSelect a radio by entering its number, N for Next, P for Previous, S to search, L for Last Played, Q to Quit: ");
+                Console.Write("\n\n [1..9] Radio, [N] Next, [P] Previous, [S] Search, [L] Last Played, [R] Reload, [Q] Quit/Back: ");
 
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int selection))
@@ -73,26 +73,19 @@ namespace RadioSharp.App.Menus
                 else
                 {
                     var key = input!.Trim().ToUpper();
-                    switch (key)
+                    var menuActions = new Dictionary<string, Func<Task>>
                     {
-                        case "N":
-                            currentPage = Math.Min(currentPage + 1, totalPages);
-                            break;
-                        case "P":
-                            currentPage = Math.Max(currentPage - 1, 1);
-                            break;
-                        case "S":
-                            await DisplaySearchMenuAsync();
-                            break;
-                        case "L":
-                            await DisplayPlayBackMenuAsync(true);
-                            break;
-                        case "R":
-                            ReloadStations();
-                            break;
-                        case "Q":
-                            exit = true;
-                            break;
+                        { "N", () => { currentPage = Math.Min(currentPage + 1, totalPages); return Task.CompletedTask; } },
+                        { "P", () => { currentPage = Math.Max(currentPage - 1, 1); return Task.CompletedTask; } },
+                        { "S", async () => await DisplaySearchMenuAsync() },
+                        { "L", async () => await DisplayPlayBackMenuAsync(true) },
+                        { "R", () => { ReloadStations(); return Task.CompletedTask; } },
+                        { "Q", () => { exit = true; return Task.CompletedTask; } }
+                    };
+
+                    if (menuActions.TryGetValue(key, out var action))
+                    {
+                        await action();
                     }
                 }
             }
