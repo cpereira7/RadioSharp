@@ -28,7 +28,7 @@ namespace RadioSharp.App
             Console.WriteLine(@"                                                   |_|    ");
             Console.WriteLine();
         }
-
+        
         static async Task Main(string[] args)
         {
             database.InitDatabase();
@@ -36,7 +36,7 @@ namespace RadioSharp.App
             await DisplayPlayBackMenuAsync();
         }
 
-        private static async Task DisplayPlayBackMenuAsync()
+        private static async Task DisplayPlayBackMenuAsync(bool lastPlayed = false)
         {
             int currentPage = 1;
 
@@ -44,6 +44,9 @@ namespace RadioSharp.App
             while (!exit)
             {
                 radios = RadioStationsImporter.GetRadios();
+
+                if (lastPlayed)
+                    radios = database.GetRadios();
 
                 int totalPages = (int)Math.Ceiling((double)radios.Count / PageSize);
 
@@ -54,7 +57,7 @@ namespace RadioSharp.App
                 DisplayRadioMenu(currentPage);
 
                 Console.WriteLine($" Page {currentPage} of {totalPages}");
-                Console.Write("\n\nSelect a radio by entering its number, N for Next Page, P for Previous Page, S to search, Q to Quit: ");
+                Console.Write("\n\nSelect a radio by entering its number, N for Next Page, P for Previous Page, S to search, L for Last Played, Q to Quit: ");
 
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out int selection))
@@ -64,7 +67,10 @@ namespace RadioSharp.App
                         DrawAppLogo();
 
                         var selectedRadio = radios[selection - 1];
-                        database.AddRadio(selectedRadio);
+
+                        if (!lastPlayed)
+                            database.AddRadio(selectedRadio);
+
                         RadioPlayer.PlayStream(selectedRadio, selection);
                     }
                 }
@@ -81,6 +87,9 @@ namespace RadioSharp.App
                             break;
                         case "S":
                             await DisplaySearchMenuAsync();
+                            break;
+                        case "L":
+                            await DisplayPlayBackMenuAsync(true);
                             break;
                         case "Q":
                             exit = true;

@@ -1,8 +1,6 @@
 ﻿using DuckDB.NET.Data;
-using DuckDB.NET.Native;
 using Newtonsoft.Json;
 using RadioSharp.App.Models;
-using System.Linq;
 using System.Text;
 
 namespace RadioSharp.App.Data
@@ -40,25 +38,33 @@ namespace RadioSharp.App.Data
             command.ExecuteNonQuery();
         }
 
-        public string GetRadios()
+        public IList<RadioStation> GetRadios()
         {
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "SELECT json_group_array(radio) AS radio_array " +
-                "FROM (SELECT radio FROM played_radios ORDER BY time DESC LIMIT 5);";
+                "FROM (SELECT radio FROM played_radios ORDER BY time DESC LIMIT 10);";
             using var reader = command.ExecuteReader();
 
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             while (reader.Read())
             {
                 stringBuilder.Append(reader.GetString(0));
             }
 
-            return stringBuilder.ToString();
+            return DeserializeRadioStations(stringBuilder.ToString())!;
         }
 
         private static string ConvertRadioStation(RadioStation radioStation)
         {
             return JsonConvert.SerializeObject(radioStation, Formatting.Indented);
+        }
+
+        private static IList<RadioStation> DeserializeRadioStations(string radioStations)
+        {
+            if (!string.IsNullOrEmpty(radioStations))
+                return JsonConvert.DeserializeObject<IList<RadioStation>>(radioStations);
+
+            return new List<RadioStation>();
         }
     }
 }
