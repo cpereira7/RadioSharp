@@ -9,6 +9,7 @@ namespace RadioSharp.App
     internal class Program
     {
         private static IList<RadioStation> radios = new List<RadioStation>();
+        private static Database database = new Database();
         private const int PageSize = 10;
 
         static void DrawAppLogo()
@@ -30,6 +31,8 @@ namespace RadioSharp.App
 
         static async Task Main(string[] args)
         {
+            database.InitDatabase();
+
             await DisplayPlayBackMenuAsync();
         }
 
@@ -61,6 +64,7 @@ namespace RadioSharp.App
                         DrawAppLogo();
 
                         var selectedRadio = radios[selection - 1];
+                        database.AddRadio(selectedRadio);
                         RadioPlayer.PlayStream(selectedRadio, selection);
                     }
                 }
