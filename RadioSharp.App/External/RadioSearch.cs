@@ -1,15 +1,21 @@
 ﻿using RadioBrowser.Models;
 using RadioBrowser;
 using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
-using RadioSharp.App.Helpers;
+using RadioSharp.App.Stations;
+using RadioSharp.App.Menus;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.App.External
 {
-    internal class RadioSearch
+    public class RadioSearch : IRadioSearch
     {
-        protected RadioSearch() { }
-        internal static async Task SearchRadios(string name = "", string countryCode = "", string language = "")
+        private readonly IRadioStationsHandler _radioStationsHandler;
+
+        public RadioSearch(IRadioStationsHandler radioStationsHandler)
+        {
+            _radioStationsHandler = radioStationsHandler;
+        }
+
+        public async Task SearchRadios(string name = "", string countryCode = "", string language = "")
         {
             Console.WriteLine("\nSearching...");
 
@@ -27,11 +33,11 @@ namespace RadioSharp.App.Data
             var radioBrowser = new RadioBrowserClient();
 
             var advancedSearch = await radioBrowser.Search.AdvancedAsync(options);
-            
+
             HandleSearchResults(advancedSearch);
         }
 
-        private static void HandleSearchResults(List<StationInfo> searchResults)
+        private void HandleSearchResults(List<StationInfo> searchResults)
         {
             var resultList = new List<RadioStation>();
 
@@ -47,7 +53,7 @@ namespace RadioSharp.App.Data
                     }
                 }
 
-                RadioStationsExporter.ExportRadios(resultList);
+                _radioStationsHandler.SaveRadios(resultList);
 
                 ConsoleHelpers.DisplayMessageWithDelay($"Found {resultList.Count} radio stations matching the criteria.", 3000);
             }
