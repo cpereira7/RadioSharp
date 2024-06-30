@@ -49,13 +49,7 @@ namespace RadioSharp.App.Data
             command.CommandText = "SELECT * FROM radios;";
             using var reader = command.ExecuteReader();
 
-            var stringBuilder = new StringBuilder();
-            while (reader.Read())
-            {
-                stringBuilder.Append(reader.GetString(0));
-            }
-
-            return _jsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
+            return ReadQueryResults(reader);
         }
 
         public void ClearRadios()
@@ -102,11 +96,23 @@ namespace RadioSharp.App.Data
                 "FROM(SELECT radio FROM OrderedRadios WHERE rn = 1 ORDER BY time DESC LIMIT 10 ); ";
 
             using var reader = command.ExecuteReader();
+            
+            return ReadQueryResults(reader);
+        }
 
+        private IList<RadioStation> ReadQueryResults(DuckDBDataReader reader)
+        {
             var stringBuilder = new StringBuilder();
             while (reader.Read())
             {
-                stringBuilder.Append(reader.GetString(0));
+                try
+                {
+                    stringBuilder.Append(reader.GetString(0));
+                }
+                catch
+                {
+                    return new List<RadioStation>();
+                }
             }
 
             return _jsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
