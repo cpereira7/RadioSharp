@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
-using RadioSharp.App.Models;
+using RadioSharp.Service.Models;
+using RadioSharp.Service.Parser;
 
 namespace RadioSharp.App.Parser
 {

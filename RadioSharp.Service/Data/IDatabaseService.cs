@@ -1,6 +1,6 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.Service.Models;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.Service.Data
 {
     public interface IDatabaseService
     {
@@ -9,7 +9,7 @@ namespace RadioSharp.App.Data
         IList<RadioStation> GetRadios();
         void ClearRadios();
         int GetRadioStationCount();
-        
+
         void AddPlayedRadio(RadioStation radio);
         IList<RadioStation> GetPlayedRadios();
     }

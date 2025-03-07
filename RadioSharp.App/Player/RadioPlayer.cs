@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
 using RadioSharp.App.Menus;
-using RadioSharp.App.Models;
 using RadioSharp.App.Stations;
+using RadioSharp.Service.Models;
 using System.Diagnostics;
 
 namespace RadioSharp.App.Player

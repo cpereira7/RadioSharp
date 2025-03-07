@@ -1,6 +1,6 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.Service.Models;
 
-namespace RadioSharp.App.Parser
+namespace RadioSharp.Service.Parser
 {
     public interface IJsonParsingService
     {

@@ -1,4 +1,4 @@
-﻿namespace RadioSharp.App.Models
+﻿  namespace RadioSharp.Service.Models
 {
     public class RadioStation
     {

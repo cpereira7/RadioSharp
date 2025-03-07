@@ -1,6 +1,6 @@
-﻿using RadioSharp.App.Data;
-using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
+﻿using RadioSharp.Service.Data;
+using RadioSharp.Service.Models;
+using RadioSharp.Service.Parser;
 
 namespace RadioSharp.App.Stations
 {

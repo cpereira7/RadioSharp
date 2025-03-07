@@ -1,6 +1,6 @@
 ﻿using RadioBrowser.Models;
 using RadioBrowser;
-using RadioSharp.App.Models;
+using RadioSharp.Service.Models;
 using RadioSharp.App.Stations;
 using RadioSharp.App.Menus;
 

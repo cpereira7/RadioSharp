@@ -1,9 +1,9 @@
 ﻿using DuckDB.NET.Data;
-using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
+using RadioSharp.Service.Models;
+using RadioSharp.Service.Parser;
 using System.Text;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.Service.Data
 {
     public class DatabaseService : IDatabaseService
     {
@@ -14,7 +14,7 @@ namespace RadioSharp.App.Data
         public DatabaseService(IJsonParsingService jsonParsingService)
         {
             duckDBConnection = new DuckDBConnection($"Data Source={dataSource}");
-            
+
             _jsonParsingService = jsonParsingService;
         }
 
@@ -96,7 +96,7 @@ namespace RadioSharp.App.Data
                 "FROM(SELECT radio FROM OrderedRadios WHERE rn = 1 ORDER BY time DESC LIMIT 10 ); ";
 
             using var reader = command.ExecuteReader();
-            
+
             return ReadQueryResults(reader);
         }
 

@@ -1,7 +1,7 @@
 ﻿using RadioSharp.App.External;
-using RadioSharp.App.Models;
 using RadioSharp.App.Player;
 using RadioSharp.App.Stations;
+using RadioSharp.Service.Models;
 
 namespace RadioSharp.App.Menus
 {
