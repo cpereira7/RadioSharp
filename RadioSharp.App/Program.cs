@@ -7,6 +7,7 @@ using RadioSharp.App.Player;
 using RadioSharp.App.Stations;
 using RadioSharp.Service.Data;
 using RadioSharp.Service.Parser;
+using RadioSharp.Service.Player;
 
 namespace RadioSharp.App
 {
@@ -32,6 +33,7 @@ namespace RadioSharp.App
                 services.AddSingleton<IRadioSearch, RadioSearch>();
                 services.AddSingleton<IDatabaseService, DatabaseService>();
                 services.AddSingleton<IMenuService, MenuService>();
+                services.AddSingleton<IRadioPlayerHandler, RadioPlayerHandler>();
                 services.AddSingleton<IRadioPlayer, RadioPlayer>();
             });
     }

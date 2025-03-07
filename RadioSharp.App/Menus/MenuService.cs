@@ -12,9 +12,9 @@ namespace RadioSharp.App.Menus
 
         private readonly IRadioStationsHandler _radioStationsHandler;
         private readonly IRadioSearch _radioSearch;
-        private readonly IRadioPlayer _radioPlayer;
+        private readonly IRadioPlayerHandler _radioPlayer;
 
-        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IRadioPlayer radioPlayer)
+        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IRadioPlayerHandler radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;
