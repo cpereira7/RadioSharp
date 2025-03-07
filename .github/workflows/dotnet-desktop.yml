@@ -27,7 +27,7 @@ jobs:
         run: dotnet build RadioSharp.App/RadioSharp.App.csproj --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish RadioSharp.App/RadioSharp.App.csproj --configuration Release --no-restore --output publish
+        run: dotnet publish RadioSharp.App/RadioSharp.App.csproj --configuration Release -r win-x64 --no-restore --output publish -p:PublishSingleFile=true --self-contained
 
       - name: Create zip archive
         run: Compress-Archive -Path publish/* -DestinationPath publish/RadioSharp-App-${{ github.ref_name }}.zip
