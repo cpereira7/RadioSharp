@@ -1,5 +1,4 @@
-﻿using RadioSharp.Service.Models;
-using RadioSharp.App.Stations;
+﻿using RadioSharp.App.Stations;
 using RadioSharp.App.Menus;
 using RadioSharp.Service.RadioSearch;
 

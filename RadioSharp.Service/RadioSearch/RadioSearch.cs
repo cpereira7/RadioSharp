@@ -42,7 +42,7 @@ namespace RadioSharp.Service.RadioSearch
                     }
                 }
             }
-            
+
             return resultList;
         }
     }

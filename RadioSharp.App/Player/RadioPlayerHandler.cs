@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using RadioSharp.App.Menus;
+﻿using RadioSharp.App.Menus;
 using RadioSharp.App.Stations;
 using RadioSharp.Service.Models;
 using RadioSharp.Service.Player;
@@ -53,7 +52,7 @@ namespace RadioSharp.App.Player
             {
                 if (Console.KeyAvailable && !VolumeKeyPressed())
                 {
-                    _stopPlaying?.Cancel(); 
+                    _stopPlaying?.Cancel();
                     break;
                 }
 

@@ -13,7 +13,7 @@ using RadioSharp.Service.RadioSearch;
 namespace RadioSharp.App
 {
     internal class Program
-    {        
+    {
         static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
