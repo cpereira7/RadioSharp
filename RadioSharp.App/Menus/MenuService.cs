@@ -1,7 +1,7 @@
 ﻿using RadioSharp.App.External;
 using RadioSharp.App.Player;
-using RadioSharp.App.Stations;
 using RadioSharp.Service.Models;
+using RadioSharp.Service.Stations;
 
 namespace RadioSharp.App.Menus
 {
@@ -10,11 +10,11 @@ namespace RadioSharp.App.Menus
         private IList<RadioStation> radios = new List<RadioStation>();
         private const int PageSize = 10;
 
-        private readonly IRadioStationsHandler _radioStationsHandler;
+        private readonly IRadioStationsService _radioStationsHandler;
         private readonly IRadioSearchHandler _radioSearch;
         private readonly IRadioPlayerHandler _radioPlayer;
 
-        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearchHandler radioSearch, IRadioPlayerHandler radioPlayer)
+        public MenuService(IRadioStationsService radioStationsHandler, IRadioSearchHandler radioSearch, IRadioPlayerHandler radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;

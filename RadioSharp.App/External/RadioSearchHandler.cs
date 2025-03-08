@@ -1,15 +1,15 @@
-﻿using RadioSharp.App.Stations;
-using RadioSharp.App.Menus;
-using RadioSharp.Service.RadioSearch;
+﻿using RadioSharp.App.Menus;
+using RadioSharp.Service.Search;
+using RadioSharp.Service.Stations;
 
 namespace RadioSharp.App.External
 {
     public class RadioSearchHandler : IRadioSearchHandler
     {
-        private readonly IRadioStationsHandler _radioStationsHandler;
+        private readonly IRadioStationsService _radioStationsHandler;
         private readonly IRadioSearch _radioSearch;
 
-        public RadioSearchHandler(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch)
+        public RadioSearchHandler(IRadioStationsService radioStationsHandler, IRadioSearch radioSearch)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;

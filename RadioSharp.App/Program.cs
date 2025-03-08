@@ -3,11 +3,7 @@ using Microsoft.Extensions.Hosting;
 using RadioSharp.App.External;
 using RadioSharp.App.Menus;
 using RadioSharp.App.Player;
-using RadioSharp.App.Stations;
-using RadioSharp.Service.Data;
-using RadioSharp.Service.Parser;
-using RadioSharp.Service.Player;
-using RadioSharp.Service.RadioSearch;
+using RadioSharp.Service.Configuration;
 
 namespace RadioSharp.App
 {
@@ -19,8 +15,6 @@ namespace RadioSharp.App
 
             var serviceProvider = host.Services;
 
-            serviceProvider.GetRequiredService<IDatabaseService>().InitDatabase();
-
             await serviceProvider.GetRequiredService<IMenuService>().DisplayPlayBackMenuAsync();
         }
 
@@ -28,13 +22,11 @@ namespace RadioSharp.App
             Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
-                services.AddSingleton<IRadioStationsHandler, RadioStationsHandler>();
+                services.AddRadioServices();
+
                 services.AddSingleton<IRadioSearchHandler, RadioSearchHandler>();
-                services.AddSingleton<IDatabaseService, DatabaseService>();
                 services.AddSingleton<IMenuService, MenuService>();
                 services.AddSingleton<IRadioPlayerHandler, RadioPlayerHandler>();
-                services.AddSingleton<IRadioPlayer, RadioPlayer>();
-                services.AddSingleton<IRadioSearch, RadioSearch>();
             });
     }
 }

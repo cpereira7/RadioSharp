@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RadioSharp.Service.Data
 {
-    public class DatabaseService : IDatabaseService
+    internal class DatabaseService : IDatabaseService
     {
         const string dataSource = "radios.db";
         private readonly DuckDBConnection duckDBConnection;
@@ -32,7 +32,7 @@ namespace RadioSharp.Service.Data
             if (radios == null)
                 return;
 
-            var radioValue = JsonParsingService.ConvertRadioStations(radios);
+            var radioValue = JsonParsingUtils.ConvertRadioStations(radios);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO radios VALUES ($radios);";
@@ -74,7 +74,7 @@ namespace RadioSharp.Service.Data
             if (radio == null)
                 return;
 
-            var radioValue = JsonParsingService.ConvertRadioStation(radio);
+            var radioValue = JsonParsingUtils.ConvertRadioStation(radio);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO played_radios VALUES ($time, $radio);";
@@ -112,7 +112,7 @@ namespace RadioSharp.Service.Data
                 }
             }
 
-            return JsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
+            return JsonParsingUtils.DeserializeRadioStations(stringBuilder.ToString())!;
         }
     }
 }

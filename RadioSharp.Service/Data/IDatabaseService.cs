@@ -2,7 +2,7 @@
 
 namespace RadioSharp.Service.Data
 {
-    public interface IDatabaseService
+    internal interface IDatabaseService
     {
         void InitDatabase();
         void SaveRadios(IList<RadioStation> radios);

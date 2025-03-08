@@ -1,6 +1,6 @@
 ﻿using RadioSharp.Service.Models;
 
-namespace RadioSharp.Service.RadioSearch
+namespace RadioSharp.Service.Search
 {
     public interface IRadioSearch
     {

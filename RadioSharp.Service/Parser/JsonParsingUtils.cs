@@ -3,7 +3,7 @@ using RadioSharp.Service.Models;
 
 namespace RadioSharp.Service.Parser
 {
-    public static class JsonParsingService
+    internal static class JsonParsingUtils
     {
         public static string ConvertRadioStation(RadioStation radioStation)
         {

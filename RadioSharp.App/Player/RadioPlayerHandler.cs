@@ -1,20 +1,20 @@
 ﻿using RadioSharp.App.Menus;
-using RadioSharp.App.Stations;
 using RadioSharp.Service.Models;
 using RadioSharp.Service.Player;
+using RadioSharp.Service.Stations;
 using System.Diagnostics;
 
 namespace RadioSharp.App.Player
 {
     public class RadioPlayerHandler : IRadioPlayerHandler
     {
-        private readonly IRadioStationsHandler _radioStationsHandler;
+        private readonly IRadioStationsService _radioStationsHandler;
         private readonly IRadioPlayer _radioPlayer;
 
         private CancellationTokenSource? _stopPlaying;
         private int radioIndex;
 
-        public RadioPlayerHandler(IRadioStationsHandler radioStationsHandler, IRadioPlayer radioPlayer)
+        public RadioPlayerHandler(IRadioStationsService radioStationsHandler, IRadioPlayer radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioPlayer = radioPlayer;

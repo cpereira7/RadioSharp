@@ -2,7 +2,7 @@
 using RadioBrowser;
 using RadioSharp.Service.Models;
 
-namespace RadioSharp.Service.RadioSearch
+namespace RadioSharp.Service.Search
 {
     public class RadioSearch : IRadioSearch
     {
