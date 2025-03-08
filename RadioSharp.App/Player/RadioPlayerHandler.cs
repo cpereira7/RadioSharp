@@ -57,6 +57,7 @@ namespace RadioSharp.App.Player
                 }
 
                 var time = $"{stopwatch.Elapsed:hh\\:mm\\:ss}";
+                
                 ConsoleHelpers.WriteMessageWithDelay($"\r ► {radioIndex}. {radio.Name} ({url}) ({time})", 500);
                 Console.Title = $" ► {radio.Name} ({time})";
             }

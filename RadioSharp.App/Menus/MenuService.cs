@@ -96,7 +96,7 @@ namespace RadioSharp.App.Menus
             int startIndex = (page - 1) * PageSize;
             int endIndex = Math.Min(startIndex + PageSize, radios.Count);
 
-            Console.WriteLine(lastPlayed ? "Last Played Radios:\n" : "Radio Lists:\n");
+            Console.WriteLine(lastPlayed ? "Last Played Radios:\n" : "Radio List:\n");
             Console.WriteLine($" Page {page}\n");
 
             for (int i = startIndex; i < endIndex; i++)
@@ -116,10 +116,7 @@ namespace RadioSharp.App.Menus
 
         private void GetStations(bool lastPlayed)
         {
-            radios = _radioStationsHandler.GetRadios();
-
-            if (lastPlayed)
-                radios = _radioStationsHandler.GetLastPlayedRadios();
+            radios = lastPlayed ? _radioStationsHandler.GetLastPlayedRadios() : _radioStationsHandler.GetRadios();
         }
 
         private void ReloadStations()
