@@ -1,8 +1,8 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.Service.Models;
 
 namespace RadioSharp.App.Player
 {
-    public interface IRadioPlayer
+    public interface IRadioPlayerHandler
     {
         void PlayStream(RadioStation selectedRadio, int choice);
     }

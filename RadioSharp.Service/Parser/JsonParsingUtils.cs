@@ -1,26 +1,26 @@
 ﻿using Newtonsoft.Json;
-using RadioSharp.App.Models;
+using RadioSharp.Service.Models;
 
-namespace RadioSharp.App.Parser
+namespace RadioSharp.Service.Parser
 {
-    public class JsonParsingService : IJsonParsingService
+    internal static class JsonParsingUtils
     {
-        public string ConvertRadioStation(RadioStation radioStation)
+        public static string ConvertRadioStation(RadioStation radioStation)
         {
             return JsonConvert.SerializeObject(radioStation, Formatting.Indented);
         }
 
-        public string ConvertRadioStations(IList<RadioStation> radios)
+        public static string ConvertRadioStations(IList<RadioStation> radios)
         {
             return JsonConvert.SerializeObject(radios, Formatting.Indented);
         }
 
-        public IList<RadioStation> DeserializeRadioStations(string radioStations)
+        public static IList<RadioStation> DeserializeRadioStations(string radioStations)
         {
             if (!string.IsNullOrEmpty(radioStations))
                 return JsonConvert.DeserializeObject<IList<RadioStation>>(radioStations)!;
 
-            return new List<RadioStation>();
+            return [];
         }
     }
 }

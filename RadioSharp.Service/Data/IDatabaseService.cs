@@ -1,15 +1,15 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.Service.Models;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.Service.Data
 {
-    public interface IDatabaseService
+    internal interface IDatabaseService
     {
         void InitDatabase();
         void SaveRadios(IList<RadioStation> radios);
         IList<RadioStation> GetRadios();
         void ClearRadios();
         int GetRadioStationCount();
-        
+
         void AddPlayedRadio(RadioStation radio);
         IList<RadioStation> GetPlayedRadios();
     }

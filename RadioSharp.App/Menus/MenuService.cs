@@ -1,7 +1,7 @@
 ﻿using RadioSharp.App.External;
-using RadioSharp.App.Models;
 using RadioSharp.App.Player;
-using RadioSharp.App.Stations;
+using RadioSharp.Service.Models;
+using RadioSharp.Service.Stations;
 
 namespace RadioSharp.App.Menus
 {
@@ -10,11 +10,11 @@ namespace RadioSharp.App.Menus
         private IList<RadioStation> radios = new List<RadioStation>();
         private const int PageSize = 10;
 
-        private readonly IRadioStationsHandler _radioStationsHandler;
-        private readonly IRadioSearch _radioSearch;
-        private readonly IRadioPlayer _radioPlayer;
+        private readonly IRadioStationsService _radioStationsHandler;
+        private readonly IRadioSearchHandler _radioSearch;
+        private readonly IRadioPlayerHandler _radioPlayer;
 
-        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IRadioPlayer radioPlayer)
+        public MenuService(IRadioStationsService radioStationsHandler, IRadioSearchHandler radioSearch, IRadioPlayerHandler radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;
@@ -96,7 +96,7 @@ namespace RadioSharp.App.Menus
             int startIndex = (page - 1) * PageSize;
             int endIndex = Math.Min(startIndex + PageSize, radios.Count);
 
-            Console.WriteLine(lastPlayed ? "Last Played Radios:\n" : "Radio Lists:\n");
+            Console.WriteLine(lastPlayed ? "Last Played Radios:\n" : "Radio List:\n");
             Console.WriteLine($" Page {page}\n");
 
             for (int i = startIndex; i < endIndex; i++)
@@ -111,30 +111,12 @@ namespace RadioSharp.App.Menus
         {
             DrawAppLogo();
 
-            Console.WriteLine("Radio Stations Search (press enter to skip)");
-
-            Console.Write("\n Radio Stations Name: ");
-            var name = Console.ReadLine();
-            Console.Write("\n Country Code: ");
-            var country = Console.ReadLine();
-            Console.Write("\n Language: ");
-            var language = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(country) && string.IsNullOrWhiteSpace(language))
-            {
-                ConsoleHelpers.DisplayMessageWithDelay("No search parameters provided. Skipping search.", 3000);
-                return;
-            }
-
-            await _radioSearch.SearchRadios(name, country, language);
+            await _radioSearch.SearchRadios();
         }
 
         private void GetStations(bool lastPlayed)
         {
-            radios = _radioStationsHandler.GetRadios();
-
-            if (lastPlayed)
-                radios = _radioStationsHandler.GetLastPlayedRadios();
+            radios = lastPlayed ? _radioStationsHandler.GetLastPlayedRadios() : _radioStationsHandler.GetRadios();
         }
 
         private void ReloadStations()

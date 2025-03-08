@@ -1,4 +1,4 @@
-﻿namespace RadioSharp.App.Models
+﻿namespace RadioSharp.Service.Models
 {
     public class RadioStation
     {
@@ -18,6 +18,11 @@
 
             RadioStation other = (RadioStation)obj;
             return Name == other.Name;
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

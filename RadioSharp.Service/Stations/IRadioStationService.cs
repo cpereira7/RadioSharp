@@ -1,8 +1,8 @@
-﻿using RadioSharp.App.Models;
+﻿using RadioSharp.Service.Models;
 
-namespace RadioSharp.App.Stations
+namespace RadioSharp.Service.Stations
 {
-    public interface IRadioStationsHandler
+    public interface IRadioStationsService
     {
         IList<RadioStation> GetRadios();
         void SaveRadios(IList<RadioStation> radios);

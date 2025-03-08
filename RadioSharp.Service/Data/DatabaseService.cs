@@ -1,21 +1,18 @@
 ﻿using DuckDB.NET.Data;
-using RadioSharp.App.Models;
-using RadioSharp.App.Parser;
+using RadioSharp.Service.Models;
+using RadioSharp.Service.Parser;
 using System.Text;
 
-namespace RadioSharp.App.Data
+namespace RadioSharp.Service.Data
 {
-    public class DatabaseService : IDatabaseService
+    internal class DatabaseService : IDatabaseService
     {
         const string dataSource = "radios.db";
         private readonly DuckDBConnection duckDBConnection;
-        private readonly IJsonParsingService _jsonParsingService;
 
-        public DatabaseService(IJsonParsingService jsonParsingService)
+        public DatabaseService()
         {
             duckDBConnection = new DuckDBConnection($"Data Source={dataSource}");
-            
-            _jsonParsingService = jsonParsingService;
         }
 
         public void InitDatabase()
@@ -35,7 +32,7 @@ namespace RadioSharp.App.Data
             if (radios == null)
                 return;
 
-            var radioValue = _jsonParsingService.ConvertRadioStations(radios);
+            var radioValue = JsonParsingUtils.ConvertRadioStations(radios);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO radios VALUES ($radios);";
@@ -77,7 +74,7 @@ namespace RadioSharp.App.Data
             if (radio == null)
                 return;
 
-            var radioValue = _jsonParsingService.ConvertRadioStation(radio);
+            var radioValue = JsonParsingUtils.ConvertRadioStation(radio);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO played_radios VALUES ($time, $radio);";
@@ -96,7 +93,7 @@ namespace RadioSharp.App.Data
                 "FROM(SELECT radio FROM OrderedRadios WHERE rn = 1 ORDER BY time DESC LIMIT 10 ); ";
 
             using var reader = command.ExecuteReader();
-            
+
             return ReadQueryResults(reader);
         }
 
@@ -115,7 +112,7 @@ namespace RadioSharp.App.Data
                 }
             }
 
-            return _jsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
+            return JsonParsingUtils.DeserializeRadioStations(stringBuilder.ToString())!;
         }
     }
 }
