@@ -2,7 +2,7 @@
 {
     public static class ConsoleHelpers
     {
-        public static void DisplayMessageWithDelay(string message, int delayMilliseconds)
+        public static void DisplayMessageWithDelay(string message, int delayMilliseconds = 3000)
         {
             Console.WriteLine(message);
             Thread.Sleep(delayMilliseconds);

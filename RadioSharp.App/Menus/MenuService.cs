@@ -11,10 +11,10 @@ namespace RadioSharp.App.Menus
         private const int PageSize = 10;
 
         private readonly IRadioStationsHandler _radioStationsHandler;
-        private readonly IRadioSearch _radioSearch;
+        private readonly IRadioSearchHandler _radioSearch;
         private readonly IRadioPlayerHandler _radioPlayer;
 
-        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearch radioSearch, IRadioPlayerHandler radioPlayer)
+        public MenuService(IRadioStationsHandler radioStationsHandler, IRadioSearchHandler radioSearch, IRadioPlayerHandler radioPlayer)
         {
             _radioStationsHandler = radioStationsHandler;
             _radioSearch = radioSearch;
@@ -111,22 +111,7 @@ namespace RadioSharp.App.Menus
         {
             DrawAppLogo();
 
-            Console.WriteLine("Radio Stations Search (press enter to skip)");
-
-            Console.Write("\n Radio Stations Name: ");
-            var name = Console.ReadLine();
-            Console.Write("\n Country Code: ");
-            var country = Console.ReadLine();
-            Console.Write("\n Language: ");
-            var language = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(country) && string.IsNullOrWhiteSpace(language))
-            {
-                ConsoleHelpers.DisplayMessageWithDelay("No search parameters provided. Skipping search.", 3000);
-                return;
-            }
-
-            await _radioSearch.SearchRadios(name, country, language);
+            await _radioSearch.SearchRadios();
         }
 
         private void GetStations(bool lastPlayed)

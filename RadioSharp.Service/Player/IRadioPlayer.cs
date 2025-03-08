@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using RadioSharp.Service.Models;
+﻿using RadioSharp.Service.Models;
 
 namespace RadioSharp.Service.Player
 {

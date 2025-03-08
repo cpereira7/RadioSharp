@@ -12,7 +12,7 @@ namespace RadioSharp.App.Player
         private readonly IRadioStationsHandler _radioStationsHandler;
         private readonly IRadioPlayer _radioPlayer;
 
-        private CancellationTokenSource _stopPlaying;
+        private CancellationTokenSource? _stopPlaying;
         private int radioIndex;
 
         public RadioPlayerHandler(IRadioStationsHandler radioStationsHandler, IRadioPlayer radioPlayer)
@@ -53,7 +53,7 @@ namespace RadioSharp.App.Player
             {
                 if (Console.KeyAvailable && !VolumeKeyPressed())
                 {
-                    _stopPlaying.Cancel(); 
+                    _stopPlaying?.Cancel(); 
                     break;
                 }
 

@@ -1,24 +1,13 @@
 ﻿using RadioBrowser.Models;
 using RadioBrowser;
 using RadioSharp.Service.Models;
-using RadioSharp.App.Stations;
-using RadioSharp.App.Menus;
 
-namespace RadioSharp.App.External
+namespace RadioSharp.Service.RadioSearch
 {
     public class RadioSearch : IRadioSearch
     {
-        private readonly IRadioStationsHandler _radioStationsHandler;
-
-        public RadioSearch(IRadioStationsHandler radioStationsHandler)
+        public async Task<IList<RadioStation>> SearchRadios(string name, string countryCode, string language)
         {
-            _radioStationsHandler = radioStationsHandler;
-        }
-
-        public async Task SearchRadios(string name = "", string countryCode = "", string language = "")
-        {
-            Console.WriteLine("\nSearching...");
-
             var options = new AdvancedSearchOptions() { Limit = 150 };
 
             if (!string.IsNullOrEmpty(name))
@@ -32,12 +21,12 @@ namespace RadioSharp.App.External
 
             var radioBrowser = new RadioBrowserClient();
 
-            var advancedSearch = await radioBrowser.Search.AdvancedAsync(options);
+            var advancedSearchResult = await radioBrowser.Search.AdvancedAsync(options);
 
-            HandleSearchResults(advancedSearch);
+            return ConvertRadioSearchResults(advancedSearchResult);
         }
 
-        private void HandleSearchResults(List<StationInfo> searchResults)
+        private static List<RadioStation> ConvertRadioSearchResults(List<StationInfo> searchResults)
         {
             var resultList = new List<RadioStation>();
 
@@ -52,15 +41,9 @@ namespace RadioSharp.App.External
                         resultList.Add(radio);
                     }
                 }
-
-                _radioStationsHandler.SaveRadios(resultList);
-
-                ConsoleHelpers.DisplayMessageWithDelay($"Found {resultList.Count} radio stations matching the criteria.", 3000);
             }
-            else
-            {
-                ConsoleHelpers.DisplayMessageWithDelay("No radio stations found matching the criteria.", 3000);
-            }
+            
+            return resultList;
         }
     }
 }
