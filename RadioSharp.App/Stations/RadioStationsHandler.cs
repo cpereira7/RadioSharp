@@ -11,12 +11,10 @@ namespace RadioSharp.App.Stations
         private readonly static string _fileName = "radios.json";
         private readonly string _filePath;
 
-        private readonly IJsonParsingService _jsonParsingService;
         private readonly IDatabaseService _databaseService;
 
-        public RadioStationsHandler(IJsonParsingService jsonParsingService, IDatabaseService databaseService)
+        public RadioStationsHandler(IDatabaseService databaseService)
         {
-            _jsonParsingService = jsonParsingService;
             _databaseService = databaseService;
             _filePath = Path.Combine(_directoryPath, _fileName);
         }
@@ -30,7 +28,7 @@ namespace RadioSharp.App.Stations
                 if (_databaseService.GetRadioStationCount() == 0)
                 {
                     var tempStations = File.ReadAllText(_filePath);
-                    radios = [.. _jsonParsingService.DeserializeRadioStations(tempStations)];
+                    radios = [.. JsonParsingService.DeserializeRadioStations(tempStations)];
                 }
                 else
                 {

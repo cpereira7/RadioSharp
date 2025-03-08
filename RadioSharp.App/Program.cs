@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using RadioSharp.App.External;
 using RadioSharp.App.Menus;
-using RadioSharp.App.Parser;
 using RadioSharp.App.Player;
 using RadioSharp.App.Stations;
 using RadioSharp.Service.Data;
@@ -29,7 +28,6 @@ namespace RadioSharp.App
             Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
-                services.AddSingleton<IJsonParsingService, JsonParsingService>();
                 services.AddSingleton<IRadioStationsHandler, RadioStationsHandler>();
                 services.AddSingleton<IRadioSearchHandler, RadioSearchHandler>();
                 services.AddSingleton<IDatabaseService, DatabaseService>();

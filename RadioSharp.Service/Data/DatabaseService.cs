@@ -9,13 +9,10 @@ namespace RadioSharp.Service.Data
     {
         const string dataSource = "radios.db";
         private readonly DuckDBConnection duckDBConnection;
-        private readonly IJsonParsingService _jsonParsingService;
 
-        public DatabaseService(IJsonParsingService jsonParsingService)
+        public DatabaseService()
         {
             duckDBConnection = new DuckDBConnection($"Data Source={dataSource}");
-
-            _jsonParsingService = jsonParsingService;
         }
 
         public void InitDatabase()
@@ -35,7 +32,7 @@ namespace RadioSharp.Service.Data
             if (radios == null)
                 return;
 
-            var radioValue = _jsonParsingService.ConvertRadioStations(radios);
+            var radioValue = JsonParsingService.ConvertRadioStations(radios);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO radios VALUES ($radios);";
@@ -77,7 +74,7 @@ namespace RadioSharp.Service.Data
             if (radio == null)
                 return;
 
-            var radioValue = _jsonParsingService.ConvertRadioStation(radio);
+            var radioValue = JsonParsingService.ConvertRadioStation(radio);
 
             using var command = duckDBConnection.CreateCommand();
             command.CommandText = "INSERT INTO played_radios VALUES ($time, $radio);";
@@ -115,7 +112,7 @@ namespace RadioSharp.Service.Data
                 }
             }
 
-            return _jsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
+            return JsonParsingService.DeserializeRadioStations(stringBuilder.ToString())!;
         }
     }
 }
